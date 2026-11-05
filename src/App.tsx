@@ -51,7 +51,7 @@ const projects: Project[] = [
     visual: 'delivery',
     href: 'https://github.com/jonnywebnet/painel-delivery',
     linkLabel: 'Ver repositório do Painel Delivery',
-    demoUrl: 'https://painel-delivery-kohl.vercel.app/login',
+    demoUrl: 'https://painel-delivery-kohl.vercel.app/',
     demoLabel: 'Abrir Painel Delivery',
   },
   {

@@ -16,7 +16,7 @@ import type { CSSProperties } from 'react';
 
 type Theme = 'dark' | 'light';
 type ModalKey = 'about' | 'projects' | 'arsenal' | 'journey' | 'contact';
-type ProjectVisual = 'delivery' | 'service' | 'cafe';
+type ProjectVisual = 'delivery' | 'service' | 'cafe' | 'mimo';
 
 type Project = {
   number: string;
@@ -28,6 +28,8 @@ type Project = {
   visual: ProjectVisual;
   href?: string;
   linkLabel?: string;
+  demoUrl?: string;
+  demoLabel?: string;
 };
 
 const navItems = [
@@ -45,13 +47,27 @@ const projects: Project[] = [
     description:
       'Painel para gerenciar cardápio: autenticação, busca por pratos, filtro por cozinha e operações de cadastro, edição e exclusão.',
     tags: ['React 19', 'TypeScript', 'Vite', 'Axios'],
-    status: 'Sem deploy · API simulada',
+    status: 'Publicado · API simulada',
     visual: 'delivery',
     href: 'https://github.com/jonnywebnet/painel-delivery',
     linkLabel: 'Ver repositório do Painel Delivery',
+    demoUrl: 'https://painel-delivery-kohl.vercel.app/login',
+    demoLabel: 'Abrir Painel Delivery',
   },
   {
     number: '02',
+    category: 'VITRINE DIGITAL',
+    title: 'Mimo! — Papelaria',
+    description:
+      'Vitrine demonstrativa de papelaria, presentes e beleza, com busca, filtros por unidade e categoria e catálogo de produtos.',
+    tags: ['React', 'JavaScript', 'Vite'],
+    status: 'Publicado · MVP demonstrativo',
+    visual: 'mimo',
+    demoUrl: 'https://mimo-flora.vercel.app/',
+    demoLabel: 'Abrir vitrine Mimo! — Papelaria',
+  },
+  {
+    number: '03',
     category: 'SISTEMA ADMINISTRATIVO',
     title: 'TG Assistência',
     description:
@@ -61,7 +77,7 @@ const projects: Project[] = [
     visual: 'service',
   },
   {
-    number: '03',
+    number: '04',
     category: 'JOGO 2D',
     title: 'Café Aurora',
     description:
@@ -84,8 +100,8 @@ const modalContent: Record<ModalKey, { eyebrow: string; title: string; body: str
   projects: {
     eyebrow: 'Projetos selecionados',
     title: 'Construções em diferentes etapas.',
-    body: 'Do painel administrativo ao jogo 2D, cada projeto representa uma parte do que venho estudando e colocando em prática.',
-    items: ['Painel Delivery — React e TypeScript, ainda sem deploy', 'TG Assistência — sistema funcional, sem código público', 'Café Aurora — jogo 2D em Python e Pygame'],
+    body: 'Da vitrine digital ao painel de delivery publicado, cada projeto representa uma parte do que venho estudando e colocando em prática.',
+    items: ['Painel Delivery — React e TypeScript, publicado na Vercel', 'Mimo! — vitrine digital demonstrativa publicada na Vercel', 'TG Assistência — sistema funcional, sem código público', 'Café Aurora — jogo 2D em Python e Pygame'],
   },
   arsenal: {
     eyebrow: 'Ferramentas e estudos',
@@ -236,6 +252,30 @@ function ProjectPreview({ project }: { project: Project }) {
     );
   }
 
+  if (project.visual === 'mimo') {
+    return (
+      <div className="project-visual visual-mimo" role="img" aria-label="Prévia ilustrativa da vitrine Mimo! de papelaria e presentes">
+        <div className="mimo-window">
+          <div className="mimo-window-top"><span /><span /><span /><b>mimo! · VITRINE</b></div>
+          <div className="mimo-layout">
+            <div className="mimo-copy">
+              <small>UMA VITRINE CHEIA DE MIMO</small>
+              <strong>Coisas lindas<br />pra todo dia.</strong>
+              <span>Papelaria · presentes · beleza</span>
+            </div>
+            <div className="mimo-products" aria-hidden="true">
+              <i className="mimo-product mimo-notebook">✿</i>
+              <i className="mimo-product mimo-gift">♡</i>
+              <i className="mimo-product mimo-bottle">✦</i>
+              <i className="mimo-product mimo-pencil">✳</i>
+            </div>
+          </div>
+        </div>
+        <span className="visual-caption">Vitrine demonstrativa · site publicado</span>
+      </div>
+    );
+  }
+
   return (
     <div
       className="project-visual visual-delivery"
@@ -254,7 +294,7 @@ function ProjectPreview({ project }: { project: Project }) {
           </div>
         </div>
       </div>
-      <span className="visual-caption">Prévia ilustrativa · sem deploy</span>
+      <span className="visual-caption">Prévia ilustrativa · site publicado</span>
     </div>
   );
 }
@@ -605,7 +645,7 @@ function App() {
 
         <div className="stats-strip" aria-label="Resumo profissional">
           <div className="wrap stats-grid">
-            <div className="stat"><strong>03</strong><span>projetos<br />em destaque</span></div>
+            <div className="stat"><strong>04</strong><span>projetos<br />em destaque</span></div>
             <div className="stat"><strong>React <i>+</i> TS</strong><span>aplicações web<br />em construção</span></div>
             <div className="stat"><strong>Próximo rumo</strong><span>primeiro estágio<br />em tecnologia</span></div>
             <p>código com<br /><em>clareza.</em></p>
@@ -646,10 +686,19 @@ function App() {
                     <p><WordReveal text={project.description} /></p>
                     <div className="project-footer">
                       <div className="tags">{project.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div>
-                      {project.href ? (
-                        <a className="project-link" href={project.href} target="_blank" rel="noreferrer" aria-label={project.linkLabel}>
-                          Ver código <ArrowUpRight size={15} />
-                        </a>
+                      {project.demoUrl || project.href ? (
+                        <div className="project-actions">
+                          {project.demoUrl && (
+                            <a className="project-link" href={project.demoUrl} target="_blank" rel="noreferrer" aria-label={project.demoLabel}>
+                              Abrir site <ArrowUpRight size={15} />
+                            </a>
+                          )}
+                          {project.href && (
+                            <a className="project-link project-repository-link" href={project.href} target="_blank" rel="noreferrer" aria-label={project.linkLabel}>
+                              Ver código <Github size={14} />
+                            </a>
+                          )}
+                        </div>
                       ) : <span className="private-label">Sem link público</span>}
                     </div>
                   </div>

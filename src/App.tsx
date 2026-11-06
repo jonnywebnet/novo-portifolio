@@ -13,11 +13,9 @@ import {
 } from 'lucide-react';
 
 import type { CSSProperties } from 'react';
-
 type Theme = 'dark' | 'light';
 type ModalKey = 'about' | 'projects' | 'arsenal' | 'journey' | 'contact';
-type ProjectVisual = 'delivery' | 'service' | 'cafe' | 'mimo';
-
+type ProjectVisual = 'delivery' | 'service' | 'cafe' | 'mimo' | 'empresa';
 type Project = {
   number: string;
   category: string;
@@ -27,6 +25,7 @@ type Project = {
   status: string;
   visual: ProjectVisual;
   href?: string;
+  linkText?: string;
   linkLabel?: string;
   demoUrl?: string;
   demoLabel?: string;
@@ -68,13 +67,15 @@ const projects: Project[] = [
   },
   {
     number: '03',
-    category: 'SISTEMA ADMINISTRATIVO',
-    title: 'TG Assistência',
+    category: 'OPERATIONS SUITE',
+    title: 'EmpresaMais',
     description:
-      'Sistema para organizar clientes, equipamentos, estoque, ordens de serviço e auditoria em uma assistência técnica.',
-    tags: ['React', 'TypeScript', 'Drizzle ORM'],
-    status: 'Projeto funcional · código privado',
-    visual: 'service',
+      'Centro de comando para equipes técnicas, reunindo ordens de serviço, relacionamento com clientes, estoque e gestão financeira.',
+    tags: ['Ordens de serviço', 'CRM', 'Estoque', 'Financeiro'],
+    status: 'Demo pública · código privado',
+    visual: 'empresa',
+    demoUrl: 'https://empresamais.vercel.app',
+    demoLabel: 'Abrir a demonstração online da EmpresaMais',
   },
   {
     number: '04',
@@ -101,7 +102,7 @@ const modalContent: Record<ModalKey, { eyebrow: string; title: string; body: str
     eyebrow: 'Projetos selecionados',
     title: 'Construções em diferentes etapas.',
     body: 'Da vitrine digital ao painel de delivery publicado, cada projeto representa uma parte do que venho estudando e colocando em prática.',
-    items: ['Painel Delivery — React e TypeScript, publicado na Vercel', 'Mimo! — vitrine digital demonstrativa publicada na Vercel', 'TG Assistência — sistema funcional, sem código público', 'Café Aurora — jogo 2D em Python e Pygame'],
+    items: ['Painel Delivery — React e TypeScript, publicado na Vercel', 'Mimo! — vitrine digital demonstrativa publicada na Vercel', 'EmpresaMais — centro de comando para operações de equipes técnicas, com demonstração online', 'Café Aurora — jogo 2D em Python e Pygame'],
   },
   arsenal: {
     eyebrow: 'Ferramentas e estudos',
@@ -234,11 +235,34 @@ function CampMap({ onOpen }: { onOpen: (key: ModalKey) => void }) {
 }
 
 function ProjectPreview({ project }: { project: Project }) {
-  if (project.visual === 'service') {
+  if (project.visual === 'empresa') {
     return (
-      <div className="project-visual visual-service">
-        <img src="/assets/tg-assistencia.jpg" alt="Tela real do painel do sistema TG Assistência" loading="lazy" />
-        <span className="visual-caption">TG Assistência · captura do projeto</span>
+      <div
+        className="project-visual visual-empresa"
+        role="img"
+        aria-label="Prévia ilustrativa do EmpresaMais Operations Suite; não é uma captura real do sistema"
+      >
+        <div className="empresa-window">
+          <div className="empresa-topbar">
+            <span className="empresa-brand-mark">EM</span>
+            <span className="empresa-brand-copy">EmpresaMais<small>OPERATIONS SUITE</small></span>
+            <span className="empresa-status"><i />COMMAND CENTER</span>
+          </div>
+          <div className="empresa-rail"><span /><span /><span /><span /></div>
+          <div className="empresa-content">
+            <div className="empresa-heading">
+              <span><small>GESTÃO TÉCNICA COM CLAREZA</small><strong>Command Center</strong></span>
+              <i>Workspace</i>
+            </div>
+            <div className="empresa-modules">
+              <div className="empresa-module"><span>OS</span><b>Ordens de serviço</b></div>
+              <div className="empresa-module"><span>CRM</span><b>CRM e comercial</b></div>
+              <div className="empresa-module"><span>ST</span><b>Estoque e compras</b></div>
+              <div className="empresa-module"><span>FIN</span><b>Financeiro e billing</b></div>
+            </div>
+          </div>
+        </div>
+        <span className="visual-caption">Prévia ilustrativa · demo online</span>
       </div>
     );
   }
@@ -674,7 +698,7 @@ function App() {
           <div className="wrap">
             <div className="section-head reveal">
               <div><div className="eyebrow"><span className="rune">ᚲ</span> Tesouros da forja</div><h2><WordReveal text="Projetos selecionados" /></h2></div>
-              <p><WordReveal text="Projetos pessoais e acadêmicos em diferentes etapas — sem inventar demonstrações que ainda não existem." /></p>
+              <p><WordReveal text="Projetos pessoais e acadêmicos em diferentes etapas, com demonstrações publicadas quando disponíveis." /></p>
             </div>
             <div className="project-grid">
               {projects.map((project) => (

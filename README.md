@@ -23,11 +23,11 @@ npm run preview
 
 - Apresentação pessoal, formação, localização e objetivo profissional;
 - Mapa interativo com atalhos para seções e modais;
-- Projetos Painel Delivery, Mimo! — Papelaria, TG Assistência e Café Aurora;
+- Projetos Painel Delivery, Mimo! — Papelaria, EmpresaMais e Café Aurora;
 - Alternância entre temas claro e escuro, com preferência salva no navegador;
 - Animações respeitando a preferência do sistema por movimento reduzido;
 - Layout adaptável para celular e desktop.
 
-Painel Delivery e Mimo! têm links para suas versões publicadas na Vercel. O card do Painel Delivery também aponta para seu repositório público; o repositório do Mimo! é privado. As artes dos cards são prévias ilustrativas, não capturas reais dos sistemas. Mimo! é um MVP demonstrativo, sem backend ou autenticação real; TG Assistência permanece sem link para código privado, e Café Aurora aponta para seu repositório público.
+Painel Delivery, Mimo! e EmpresaMais têm links para suas versões publicadas na Vercel. O card do Painel Delivery também aponta para seu repositório público; os repositórios do Mimo! e EmpresaMais são privados. As artes dos cards são prévias ilustrativas, não capturas reais dos sistemas. Mimo! é um MVP demonstrativo, sem backend ou autenticação real; Café Aurora aponta para seu repositório público.
 
 Este projeto é separado do diretório `C:\Code\portifoliop1` e não configura publicação nem sincronização com serviços Manus.

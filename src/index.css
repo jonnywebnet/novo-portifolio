@@ -226,6 +226,27 @@ p { color: var(--bone-dim); }
 .visual-service img { object-position: center top; }
 .visual-cafe img { object-position: center center; }
 .visual-caption { position: absolute; right: 10px; bottom: 10px; padding: 5px 8px; background: rgba(8, 13, 14, .76); color: #f4efdf; font-family: 'DM Mono', monospace; font-size: .53rem; letter-spacing: .07em; text-transform: uppercase; }
+.visual-empresa { padding: 22px; background: radial-gradient(circle at 82% 14%, rgba(112, 171, 213, .22), transparent 34%), linear-gradient(135deg, #17243a, #1b3542); }
+.empresa-window { display: grid; width: min(100%, 500px); min-height: 190px; grid-template-columns: 38px minmax(0, 1fr); overflow: hidden; border: 1px solid rgba(255, 255, 255, .42); border-radius: 7px; background: #f8fafc; color: #20324b; box-shadow: 0 18px 40px rgba(0, 0, 0, .28); transform: rotate(.5deg); }
+.empresa-topbar { display: flex; grid-column: 1 / -1; min-height: 39px; align-items: center; gap: 8px; padding: 0 12px; border-bottom: 1px solid #e4eaf1; background: #fff; }
+.empresa-brand-mark { display: grid; width: 23px; height: 23px; place-items: center; border-radius: 6px; background: #193f6d; color: #fff; font-size: .48rem; font-weight: 700; }
+.empresa-brand-copy { display: flex; flex-direction: column; gap: 1px; color: #203553; font-size: .56rem; font-weight: 700; }
+.empresa-brand-copy small { color: #728197; font-family: 'DM Mono', monospace; font-size: .36rem; letter-spacing: .09em; }
+.empresa-status { display: inline-flex; align-items: center; gap: 5px; margin-left: auto; color: #66758a; font-family: 'DM Mono', monospace; font-size: .39rem; letter-spacing: .07em; }
+.empresa-status i { width: 5px; height: 5px; border-radius: 50%; background: #39a981; }
+.empresa-rail { display: flex; flex-direction: column; align-items: center; gap: 12px; padding-top: 13px; background: #172b45; }
+.empresa-rail span { width: 14px; height: 11px; border: 1px solid rgba(218, 232, 247, .55); border-radius: 3px; opacity: .72; }
+.empresa-rail span:first-child { border-color: #83b4df; background: #83b4df; opacity: 1; }
+.empresa-content { padding: 13px 14px; }
+.empresa-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; }
+.empresa-heading > span { display: flex; flex-direction: column; gap: 3px; }
+.empresa-heading small { color: #74859a; font-family: 'DM Mono', monospace; font-size: .37rem; letter-spacing: .1em; }
+.empresa-heading strong { color: #20324b; font-size: .75rem; }
+.empresa-heading i { padding: 5px 7px; background: #e9f2fc; color: #375778; font-size: .43rem; font-style: normal; }
+.empresa-modules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-top: 10px; }
+.empresa-module { display: flex; min-height: 34px; align-items: center; gap: 7px; padding: 5px 7px; border: 1px solid #e6ebf2; background: #fff; }
+.empresa-module > span { display: grid; width: 20px; height: 20px; flex: 0 0 20px; place-items: center; border-radius: 5px; background: #edf4fa; color: #31628e; font-family: 'DM Mono', monospace; font-size: .35rem; font-weight: 700; }
+.empresa-module b { color: #30435d; font-size: .43rem; font-weight: 600; }
 .visual-delivery { padding: 22px; background: radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--ice) 18%, transparent), transparent 30%), linear-gradient(135deg, color-mix(in srgb, var(--fire) 14%, var(--slate-2)), var(--slate-2)); }
 .delivery-window { width: min(100%, 500px); overflow: hidden; border: 1px solid rgba(238, 232, 215, .28); background: #fcfbf8; color: #253338; box-shadow: 0 18px 40px rgba(0, 0, 0, .28); transform: rotate(-1deg); }
 .delivery-window-top { display: flex; height: 29px; align-items: center; gap: 5px; padding: 0 10px; border-bottom: 1px solid #e0e3df; background: #f1f1eb; }
